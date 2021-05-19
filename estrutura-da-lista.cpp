@@ -22,6 +22,7 @@ public:
     void insereInicio(int valor); // INSERE NO INÍCIO
     void insereFinal(int valor);  // INSERE NO FIM
     void mostraLista();           // EXIBE A LISTA
+    void bubbleSort();            // FAZ A ORDENAÇÃO
 };
 
 //MAIN
@@ -30,23 +31,19 @@ int main()
     ListaDupla lista1; // INSTÂNCIA DA CLASSE
     int opcao, valor;
 
-    do
-    {
-        cin >> opcao;
-
-        if (opcao == 1)
-        {
-            cin >> valor;
-            lista1.insereInicio(valor);
-        }
-        else if (opcao == 2)
-        {
-            cin >> valor;
-            lista1.insereFinal(valor);
-        }
-
-    } while (opcao != 0);
-
+    lista1.insereFinal(10);
+    lista1.insereFinal(57);
+    lista1.insereFinal(12);
+    lista1.insereInicio(35);
+    lista1.insereInicio(69);
+    lista1.insereInicio(52);
+    lista1.insereInicio(53);
+    lista1.insereInicio(87);
+    lista1.insereInicio(38);
+    lista1.insereInicio(25);
+    
+    lista1.bubbleSort();
+    
     lista1.mostraLista();
 
     return 0;
@@ -93,11 +90,33 @@ void ListaDupla::insereFinal(int valor) // INSERE OS VALORES NO FINAL
         ultimo = Novo;
     }
 }
+
+void ListaDupla::bubbleSort() // ORDENA A LISTA
+{
+    No *ini;
+    No *fim = NULL;
+    No *atual;
+
+    for (ini = primeiro; ini->proximo != NULL; ini = ini->proximo)
+    {
+        for (atual = primeiro; atual->proximo != fim; atual = atual->proximo)
+        {
+            if (atual->valor > atual->proximo->valor)
+            {
+                int Temp = atual->valor;
+                atual->valor = atual->proximo->valor;
+                atual->proximo->valor = Temp;
+            }
+        }
+        fim = atual;
+    }
+}
+
 void ListaDupla::mostraLista() // EXIBE A LISTA
 {
     No *Temp;
     Temp = primeiro;
-    while (Temp)
+    while (Temp != NULL)
     {
         cout << Temp->valor << endl;
         Temp = Temp->proximo;
