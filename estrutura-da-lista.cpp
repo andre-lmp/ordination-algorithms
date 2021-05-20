@@ -151,8 +151,7 @@ void ListaDupla::bubbleSort() // ORDENA A LISTA
         {
             for (atual = primeiro; atual->proximo != fim; atual = atual->proximo)
             {
-                int tst = atual->proximo->valor;
-                if (atual->valor > tst)
+                if (atual->valor > atual->proximo->valor)
                 {
                     int Temp = atual->valor;
                     atual->valor = atual->proximo->valor;
