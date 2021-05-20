@@ -51,7 +51,6 @@ int main()
     lista1.insereInicio(7);
     
     lista1.bubbleSort();
-
     lista1.mostraLista();
 
     return 0;
