@@ -29,7 +29,6 @@ public:
 int main()
 {
     ListaDupla lista1; // INSTÂNCIA DA CLASSE
-    int opcao, valor;
 
     lista1.insereFinal(1);
     lista1.insereFinal(7);
