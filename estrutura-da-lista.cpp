@@ -31,16 +31,24 @@ int main()
     ListaDupla lista1; // INSTÂNCIA DA CLASSE
     int opcao, valor;
 
-    lista1.insereFinal(10);
-    lista1.insereFinal(57);
-    lista1.insereFinal(12);
-    lista1.insereInicio(35);
-    lista1.insereInicio(69);
-    lista1.insereInicio(52);
-    lista1.insereInicio(53);
-    lista1.insereInicio(87);
-    lista1.insereInicio(38);
-    lista1.insereInicio(25);
+    lista1.insereFinal(1);
+    lista1.insereFinal(7);
+    lista1.insereFinal(5);
+    lista1.insereFinal(4);
+    lista1.insereFinal(5);
+    lista1.insereFinal(4);
+    lista1.insereFinal(4);
+    lista1.insereFinal(4);
+    lista1.insereFinal(0);
+    lista1.insereFinal(9);
+    lista1.insereFinal(9);
+    lista1.insereInicio(1);
+    lista1.insereInicio(1);
+    lista1.insereInicio(7);
+    lista1.insereInicio(7);
+    lista1.insereInicio(7);
+    lista1.insereInicio(7);
+    lista1.insereInicio(7);
     
     lista1.bubbleSort();
     
