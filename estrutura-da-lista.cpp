@@ -99,7 +99,7 @@ void ListaDupla::insereFinal(int valor) // INSERE OS VALORES NO FINAL
     }
 }
 
-void ListaDupla::bubbleSort() // ORDENA A LISTA
+void ListaDupla::bubbleSort() // BUBBLESORT
 {
     No *ini;
     No *fim = NULL;
