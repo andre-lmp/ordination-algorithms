@@ -137,7 +137,7 @@ void ListaDupla::mostraLista() // EXIBE A LISTA
 {
     if (listaVazia())
     {
-        cout << "ERRO lista vazia!" << endl;
+        return;
     }
     else
     {
