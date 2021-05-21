@@ -35,19 +35,13 @@ int main()
     lista1.insereFinal(1);
     lista1.insereFinal(7);
     lista1.insereFinal(5);
-    lista1.insereFinal(4);
     lista1.insereFinal(5);
-    lista1.insereFinal(4);
     lista1.insereFinal(4);
     lista1.insereFinal(4);
     lista1.insereFinal(0);
     lista1.insereFinal(9);
     lista1.insereFinal(9);
     lista1.insereInicio(1);
-    lista1.insereInicio(1);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
     lista1.insereInicio(7);
     lista1.insereInicio(7);
 
