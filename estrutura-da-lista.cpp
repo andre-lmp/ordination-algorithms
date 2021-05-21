@@ -24,6 +24,7 @@ public:
     bool listaCheia();            // ISFULL
     bool listaVazia();            // ISEMPTY
     void mostraLista();           // EXIBE A LISTA
+    void insertSort();
 };
 
 //MAIN
@@ -36,20 +37,9 @@ int main()
     lista1.insereFinal(5);
     lista1.insereFinal(4);
     lista1.insereFinal(5);
-    lista1.insereFinal(4);
-    lista1.insereFinal(4);
-    lista1.insereFinal(4);
-    lista1.insereFinal(0);
-    lista1.insereFinal(9);
-    lista1.insereFinal(9);
-    lista1.insereInicio(1);
-    lista1.insereInicio(1);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
 
+
+    lista1.insertSort();
     lista1.mostraLista();
 
     return 0;
@@ -131,6 +121,25 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
             ultimo = Novo;
         }
     }
+}
+
+void ListaDupla::insertSort()
+{
+    No * inicio;
+    No * deuspfv;
+    No * temp;
+    for(inicio = primeiro; inicio->proximo != NULL; inicio = inicio->proximo)
+    {
+        for(deuspfv = inicio->proximo; inicio->proximo != NULL; deuspfv = inicio->proximo->proximo)
+        {
+            if(deuspfv < inicio)
+            {
+                temp = deuspfv;
+                deuspfv = inicio;
+                inicio = temp;
+            };
+        };
+    };
 }
 
 void ListaDupla::mostraLista() // EXIBE A LISTA
