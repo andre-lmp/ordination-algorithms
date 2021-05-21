@@ -5,8 +5,9 @@ using namespace std;
 struct No
 {
     int valor;
-    No *anterior;
-    No *proximo;
+    No *anterior= NULL;
+    No *proximo= NULL;
+    
 };
 
 class ListaDupla
@@ -25,6 +26,7 @@ public:
     bool listaCheia();            // ISFULL
     void mostraLista();           // EXIBE A LISTA
     void bubbleSort();            // FAZ A ORDENAÇÃO
+    void trocarValores(No*, No*); // TROCA O VALOR DE 2 No
 };
 
 //MAIN
@@ -129,6 +131,19 @@ void ListaDupla::insereFinal(int valor) // INSERE OS VALORES NO FINAL
     }
 }
 
+void ListaDupla::trocarValores(No* v1, No* v2) {
+    if (v1->valor == v2->valor)
+    {
+        return;
+    }
+    else
+    {
+        int aux = v1->valor;
+        v1->valor = v2->valor;
+        v2->valor = aux;
+    }
+}
+
 void ListaDupla::bubbleSort() // ORDENA A LISTA
 {
     if (listaVazia())
@@ -147,9 +162,7 @@ void ListaDupla::bubbleSort() // ORDENA A LISTA
             {
                 if (atual->valor > atual->proximo->valor)
                 {
-                    int Temp = atual->valor;
-                    atual->valor = atual->proximo->valor;
-                    atual->proximo->valor = Temp;
+                    trocarValores(atual, atual->proximo);
                 }
             }
             fim = atual;
