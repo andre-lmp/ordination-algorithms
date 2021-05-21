@@ -5,8 +5,8 @@ using namespace std;
 struct No
 {
     int valor;
-    No *anterior;
-    No *proximo;
+    No *anterior= NULL;
+    No *proximo= NULL;
 };
 
 class ListaDupla
@@ -24,7 +24,8 @@ public:
     bool listaCheia();            // ISFULL
     bool listaVazia();            // ISEMPTY
     void mostraLista();           // EXIBE A LISTA
-    void insertSort();
+    void trocarValores(No*, No*); // TROCA O VALOR DE 2 NO
+    void InsertSort();
 };
 
 //MAIN
@@ -37,9 +38,21 @@ int main()
     lista1.insereFinal(5);
     lista1.insereFinal(4);
     lista1.insereFinal(5);
+    lista1.insereFinal(4);
+    lista1.insereFinal(4);
+    lista1.insereFinal(4);
+    lista1.insereFinal(0);
+    lista1.insereFinal(9);
+    lista1.insereFinal(9);
+    lista1.insereInicio(1);
+    lista1.insereInicio(1);
+    lista1.insereInicio(7);
+    lista1.insereInicio(7);
+    lista1.insereInicio(7);
+    lista1.insereInicio(7);
+    lista1.insereInicio(7);
 
-
-    lista1.insertSort();
+    lista1.InsertSort();
     lista1.mostraLista();
 
     return 0;
@@ -123,25 +136,6 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
     }
 }
 
-void ListaDupla::insertSort()
-{
-    No * inicio;
-    No * deuspfv;
-    No * temp;
-    for(inicio = primeiro; inicio->proximo != NULL; inicio = inicio->proximo)
-    {
-        for(deuspfv = inicio->proximo; inicio->proximo != NULL; deuspfv = inicio->proximo->proximo)
-        {
-            if(deuspfv < inicio)
-            {
-                temp = deuspfv;
-                deuspfv = inicio;
-                inicio = temp;
-            };
-        };
-    };
-}
-
 void ListaDupla::mostraLista() // EXIBE A LISTA
 {
     if (listaVazia())
@@ -156,6 +150,36 @@ void ListaDupla::mostraLista() // EXIBE A LISTA
         {
             cout << Temp->valor << endl;
             Temp = Temp->proximo;
+        }
+    }
+}
+
+void ListaDupla::trocarValores(No* v1, No* v2) {
+    if (v1->valor == v2->valor)
+    {
+        return;
+    }
+    else
+    {
+        int aux = v1->valor;
+        v1->valor = v2->valor;
+        v2->valor = aux;
+    }
+}
+
+void ListaDupla::InsertSort()
+{
+    No * inicio;
+    No * deuspfv;
+    No * temp;
+    for(inicio = primeiro; inicio->proximo != NULL; inicio = inicio->proximo)
+    {
+        for(deuspfv = primeiro->proximo; deuspfv != NULL; deuspfv = deuspfv->proximo)
+        {
+            if(deuspfv <= inicio)
+            {
+                trocarValores(inicio, deuspfv);
+            }
         }
     }
 }
