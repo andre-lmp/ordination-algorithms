@@ -167,7 +167,10 @@ void ListaDupla::trocarValores(No* v1, No* v2) {
 
 void ListaDupla::selectSort()
 {
-    No* atual = primeiro, * fim = ultimo, * maior = primeiro;
+    No* atual = primeiro;
+    No* fim = ultimo;
+    No* maior = primeiro;
+    
     for (fim; fim->anterior != primeiro; fim = fim->anterior)
     {
         maior = atual = primeiro;
