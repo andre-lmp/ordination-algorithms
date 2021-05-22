@@ -171,12 +171,11 @@ void ListaDupla::InsertSort()
 {
     No * inicio;
     No * deuspfv;
-    No * temp;
     for(inicio = primeiro; inicio->proximo != NULL; inicio = inicio->proximo)
     {
-        for(deuspfv = primeiro->proximo; deuspfv != NULL; deuspfv = deuspfv->proximo)
+        for(deuspfv = primeiro; deuspfv != inicio; deuspfv = deuspfv->proximo)
         {
-            if(deuspfv <= inicio)
+            if(deuspfv->valor >= inicio->valor)
             {
                 trocarValores(inicio, deuspfv);
             }
