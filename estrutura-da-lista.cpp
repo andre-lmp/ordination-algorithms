@@ -5,8 +5,8 @@ using namespace std;
 struct No
 {
     int valor;
-    No *anterior= NULL;
-    No *proximo= NULL;
+    No *anterior = NULL;
+    No *proximo = NULL;
 };
 
 class ListaDupla
@@ -18,13 +18,13 @@ private:
 
 public:
     //METODOS
-    ListaDupla();                 // CONSTRUTOR
-    void insereInicio(int valor); // INSERE NO INÍCIO
-    void insereFinal(int valor);  // INSERE NO FIM
-    bool listaCheia();            // ISFULL
-    bool listaVazia();            // ISEMPTY
-    void mostraLista();           // EXIBE A LISTA
-    void trocarValores(No*, No*); // TROCA O VALOR DE 2 NO
+    ListaDupla();                   // CONSTRUTOR
+    void insereInicio(int valor);   // INSERE NO INÍCIO
+    void insereFinal(int valor);    // INSERE NO FIM
+    bool listaCheia();              // ISFULL
+    bool listaVazia();              // ISEMPTY
+    void mostraLista();             // EXIBE A LISTA
+    void trocarValores(No *, No *); // TROCA O VALOR DE 2 NO
 };
 
 //MAIN
@@ -152,7 +152,8 @@ void ListaDupla::mostraLista() // EXIBE A LISTA
     }
 }
 
-void ListaDupla::trocarValores(No* v1, No* v2) {
+void ListaDupla::trocarValores(No *v1, No *v2)
+{
     if (v1->valor == v2->valor)
     {
         return;
