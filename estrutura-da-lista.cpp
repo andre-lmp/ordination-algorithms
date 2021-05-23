@@ -25,6 +25,7 @@ public:
     bool listaVazia();              // ISEMPTY
     void mostraLista();             // EXIBE A LISTA
     void trocarValores(No *, No *); // TROCA O VALOR DE 2 NO
+    void mergeSort();
 };
 
 //MAIN
@@ -134,6 +135,21 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
     }
 }
 
+void ListaDupla::trocarValores(No *v1, No *v2)
+{
+    if (v1->valor == v2->valor)
+    {
+        return;
+    }
+    else
+    {
+        int aux = v1->valor;
+        v1->valor = v2->valor;
+        v2->valor = aux;
+    }
+}
+
+
 void ListaDupla::mostraLista() // EXIBE A LISTA
 {
     if (listaVazia())
@@ -149,19 +165,5 @@ void ListaDupla::mostraLista() // EXIBE A LISTA
             cout << Temp->valor << endl;
             Temp = Temp->proximo;
         }
-    }
-}
-
-void ListaDupla::trocarValores(No *v1, No *v2)
-{
-    if (v1->valor == v2->valor)
-    {
-        return;
-    }
-    else
-    {
-        int aux = v1->valor;
-        v1->valor = v2->valor;
-        v2->valor = aux;
     }
 }
