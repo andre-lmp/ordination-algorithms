@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cmath>
+
 using namespace std;
 
 // Todo nó da lista tem um valor, um anterior e um próximo.
@@ -25,7 +27,9 @@ public:
     bool listaVazia();              // ISEMPTY
     void mostraLista();             // EXIBE A LISTA
     void trocarValores(No *, No *); // TROCA O VALOR DE 2 NO
-    void mergeSort();
+    void mergeSort(No *ini, No *fim);
+    void merge(No *ini, No *meio, No *fim);
+    void contaNo();
 };
 
 //MAIN
@@ -53,6 +57,8 @@ int main()
     lista1.insereInicio(7);
 
     lista1.mostraLista();
+    lista1.contaNo();
+
 
     return 0;
 }
@@ -148,7 +154,43 @@ void ListaDupla::trocarValores(No *v1, No *v2)
         v2->valor = aux;
     }
 }
+/*
+void ListaDupla::contaNo()
+{
+    No *Temp = primeiro;
+    No *cont;
+    cont->valor = 0;
 
+    while (Temp != NULL)
+    {
+        Temp = Temp->proximo;
+        cont->valor = cont->valor + 1;
+    }
+    cout << "Teste: " << cont->valor << endl;
+}
+*/
+
+// INCOMPLETO, AINDA EM TESTE.
+void ListaDupla::mergeSort(No *ini, No *fim)
+{
+    if (ini->proximo != NULL)
+    {
+        No *cont;
+        No *meio;
+        No *Temp = primeiro;
+        
+        cont->valor = 0;
+        while (Temp != NULL)
+        {
+            Temp = Temp->proximo;
+            cont->valor = cont->valor + 1;
+        }
+        meio->valor = floor(cont->valor / 2);
+        mergeSort(ini, meio);
+        mergeSort(meio, fim);
+        merge(ini, meio, fim);
+    }
+}
 
 void ListaDupla::mostraLista() // EXIBE A LISTA
 {
