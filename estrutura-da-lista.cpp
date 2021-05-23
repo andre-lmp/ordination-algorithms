@@ -5,8 +5,8 @@ using namespace std;
 struct No
 {
     int valor;
-    No *anterior= NULL;
-    No *proximo= NULL;
+    No *anterior = NULL;
+    No *proximo = NULL;
 };
 
 class ListaDupla
@@ -18,13 +18,13 @@ private:
 
 public:
     //METODOS
-    ListaDupla();                 // CONSTRUTOR
-    void insereInicio(int valor); // INSERE NO INÍCIO
-    void insereFinal(int valor);  // INSERE NO FIM
-    bool listaCheia();            // ISFULL
-    bool listaVazia();            // ISEMPTY
-    void mostraLista();           // EXIBE A LISTA
-    void trocarValores(No*, No*); // TROCA O VALOR DE 2 NO
+    ListaDupla();                   // CONSTRUTOR
+    void insereInicio(int valor);   // INSERE NO INÍCIO
+    void insereFinal(int valor);    // INSERE NO FIM
+    bool listaCheia();              // ISFULL
+    bool listaVazia();              // ISEMPTY
+    void mostraLista();             // EXIBE A LISTA
+    void trocarValores(No *, No *); // TROCA O VALOR DE 2 NO
     void InsertSort();
 };
 
@@ -154,7 +154,8 @@ void ListaDupla::mostraLista() // EXIBE A LISTA
     }
 }
 
-void ListaDupla::trocarValores(No* v1, No* v2) {
+void ListaDupla::trocarValores(No *v1, No *v2)
+{
     if (v1->valor == v2->valor)
     {
         return;
@@ -169,13 +170,13 @@ void ListaDupla::trocarValores(No* v1, No* v2) {
 
 void ListaDupla::InsertSort()
 {
-    No * inicio;
-    No * deuspfv;
-    for(inicio = primeiro; inicio->proximo != NULL; inicio = inicio->proximo)
+    No *inicio;
+    No *deuspfv;
+    for (inicio = primeiro; inicio->proximo != NULL; inicio = inicio->proximo)
     {
-        for(deuspfv = primeiro; deuspfv != inicio; deuspfv = deuspfv->proximo)
+        for (deuspfv = primeiro; deuspfv != inicio; deuspfv = deuspfv->proximo)
         {
-            if(deuspfv->valor >= inicio->valor)
+            if (deuspfv->valor >= inicio->valor)
             {
                 trocarValores(inicio, deuspfv);
             }
