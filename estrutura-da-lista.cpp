@@ -24,8 +24,8 @@ public:
     bool listaVazia();              // ISEMPTY
     bool listaCheia();              // ISFULL
     void mostraLista();             // EXIBE A LISTA
-    void bubbleSort();              // FAZ A ORDENAÇÃO
     void trocarValores(No *, No *); // TROCA O VALOR DE 2 No
+    void bubbleSort();              // FAZ A ORDENAÇÃO
 };
 
 //MAIN
