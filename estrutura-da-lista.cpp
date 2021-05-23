@@ -6,7 +6,7 @@ struct No
 {
     int valor;
     No *anterior = NULL;
-    No *proximo= NULL;
+    No *proximo = NULL;
 };
 
 class ListaDupla
@@ -24,7 +24,7 @@ public:
     bool listaCheia();            // ISFULL
     bool listaVazia();            // ISEMPTY
     void mostraLista();           // EXIBE A LISTA
-    void trocarValores(No*, No*);
+    void trocarValores(No *, No *);
     void selectSort();
 };
 
@@ -152,7 +152,8 @@ void ListaDupla::mostraLista() // EXIBE A LISTA
         }
     }
 }
-void ListaDupla::trocarValores(No* v1, No* v2) {
+void ListaDupla::trocarValores(No *v1, No *v2)
+{
     if (v1->valor == v2->valor)
     {
         return;
@@ -167,19 +168,19 @@ void ListaDupla::trocarValores(No* v1, No* v2) {
 
 void ListaDupla::selectSort()
 {
-    No* atual = primeiro;
-    No* fim = ultimo;
-    No* maior = primeiro;
-    
+    No *atual = primeiro;
+    No *fim = ultimo;
+    No *maior = primeiro;
+
     for (fim; fim->anterior != primeiro; fim = fim->anterior)
     {
         maior = atual = primeiro;
         for (atual; atual != fim->proximo; atual = atual->proximo)
         {
-            if (maior->valor <= atual->valor) {
+            if (maior->valor <= atual->valor)
+            {
                 maior = atual;
             }
-
         }
         trocarValores(fim, maior);
     }
