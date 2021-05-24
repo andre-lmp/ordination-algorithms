@@ -185,10 +185,10 @@ void ListaDupla::mergeSort(No *ini, No *fim)
             Temp = Temp->proximo;
             cont->valor = cont->valor + 1;
         }
-        meio->valor = floor(cont->valor / 2);
+        meio->valor = floor(cont->valor / 2); // recebe o valor que representa o meio da lista (divisão inteira).
         mergeSort(ini, meio);
         mergeSort(meio, fim);
-        merge(ini, meio, fim);
+        merge(ini, meio, fim); // merge ainda não feito.
     }
 }
 
