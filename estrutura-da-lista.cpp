@@ -163,9 +163,9 @@ void ListaDupla::MergeSort()
 void dividirFila(No *, No **, No **);
 No *sortedMerge(No *, No *);
 
-void startMergeSort(No **test)
+void startMergeSort(No **primeiro) //Faz o controle das funções
 {
-    No *lista = *test;
+    No *lista = *primeiro;
     No *ini, *meio;
     if (lista == NULL || lista->proximo == NULL)
     {
@@ -176,10 +176,10 @@ void startMergeSort(No **test)
     startMergeSort(&ini);
     startMergeSort(&meio);
 
-    *test = sortedMerge(ini, meio);
+    *primeiro = sortedMerge(ini, meio);
 }
 
-void dividirFila(No *lista, No **ini, No **meio)
+void dividirFila(No *lista, No **ini, No **meio) //Divide a fila em duas partes
 {
     No *slow = lista;
     No *fast = lista->proximo;
@@ -200,18 +200,12 @@ void dividirFila(No *lista, No **ini, No **meio)
     slow->proximo = NULL;
 }
 
-No *sortedMerge(No *A, No *B)
+No *sortedMerge(No *A, No *B) //Une e organiza os nodes
 {
     No *lista = NULL;
 
-    if (A == NULL)
-    {
-        return B;
-    }
-    else if (B == NULL)
-    {
-        return A;
-    }
+    if (A == NULL) { return B; }
+    else if (B == NULL){ return A;}
 
     if (A->valor <= B->valor)
     {
