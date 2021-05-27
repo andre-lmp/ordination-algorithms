@@ -1,21 +1,20 @@
 #include <iostream>
 using namespace std;
 
-
 // Todo nó da lista tem um valor, um anterior e um próximo.
 struct No
 {
     int valor;
-    No* anterior = NULL;
-    No* proximo = NULL;
+    No *anterior = NULL;
+    No *proximo = NULL;
 };
 
 class ListaDupla
 {
 private:
     //ATRIBUTOS
-    No* primeiro;
-    No* ultimo;
+    No *primeiro;
+    No *ultimo;
 
 public:
     //METODOS
@@ -25,9 +24,8 @@ public:
     bool listaCheia();              // ISFULL
     bool listaVazia();              // ISEMPTY
     void mostraLista();             // EXIBE A LISTA
-    void trocarValores(No*, No*);   // TROCA O VALOR DE 2 NO
+    void trocarValores(No *, No *); // TROCA O VALOR DE 2 NO
     void MergeSort();
-
 };
 
 //MAIN
@@ -45,7 +43,7 @@ int main()
 
     return 0;
 }
-void startMergeSort(No**);
+void startMergeSort(No **);
 
 ListaDupla::ListaDupla() // CONSTRUTOR
 {
@@ -60,7 +58,7 @@ bool ListaDupla::listaVazia() // VERIFICA SE A LISTA ESTÁ VAZIA
 
 bool ListaDupla::listaCheia() // VERIFICA SE A LISTA ESTÁ CHEIA
 {
-    No* Novo;
+    No *Novo;
     try
     {
         Novo = new No;
@@ -81,7 +79,7 @@ void ListaDupla::insereInicio(int valor) // INSERE NO INÍCIO
     }
     else
     {
-        No* Novo = new No;
+        No *Novo = new No;
         Novo->valor = valor;
         if (primeiro == NULL)
         {
@@ -90,7 +88,7 @@ void ListaDupla::insereInicio(int valor) // INSERE NO INÍCIO
         }
         else
         {
-            No* Temp;
+            No *Temp;
             Temp = primeiro;
             Novo->proximo = Temp;
             Temp->anterior = Novo;
@@ -107,7 +105,7 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
     }
     else
     {
-        No* Novo = new No;
+        No *Novo = new No;
         Novo->valor = valor;
         if (primeiro == NULL)
         {
@@ -116,7 +114,7 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
         }
         else
         {
-            No* Temp;
+            No *Temp;
             Temp = ultimo;
             Novo->anterior = Temp;
             Temp->proximo = Novo;
@@ -133,7 +131,7 @@ void ListaDupla::mostraLista() // EXIBE A LISTA
     }
     else
     {
-        No* Temp;
+        No *Temp;
         Temp = primeiro;
         while (Temp != NULL)
         {
@@ -143,7 +141,7 @@ void ListaDupla::mostraLista() // EXIBE A LISTA
     }
 }
 
-void ListaDupla::trocarValores(No* v1, No* v2)
+void ListaDupla::trocarValores(No *v1, No *v2)
 {
     if (v1->valor == v2->valor)
     {
@@ -157,17 +155,20 @@ void ListaDupla::trocarValores(No* v1, No* v2)
     }
 }
 
-void ListaDupla::MergeSort() {
+void ListaDupla::MergeSort()
+{
     startMergeSort(&primeiro);
 }
 
-void dividirFila(No*, No**, No**);
-No*  sortedMerge(No*, No*);
+void dividirFila(No *, No **, No **);
+No *sortedMerge(No *, No *);
 
-void startMergeSort(No** test) {
-    No* lista = *test;
-    No* ini, * meio;
-    if (lista == NULL || lista->proximo == NULL) {
+void startMergeSort(No **test)
+{
+    No *lista = *test;
+    No *ini, *meio;
+    if (lista == NULL || lista->proximo == NULL)
+    {
         return;
     }
     dividirFila(lista, &ini, &meio);
@@ -175,17 +176,19 @@ void startMergeSort(No** test) {
     startMergeSort(&ini);
     startMergeSort(&meio);
 
-    *test= sortedMerge(ini, meio);
+    *test = sortedMerge(ini, meio);
 }
 
-void dividirFila(No* lista, No** ini, No** meio)
+void dividirFila(No *lista, No **ini, No **meio)
 {
-    No* slow = lista;
-    No * fast = lista->proximo;
+    No *slow = lista;
+    No *fast = lista->proximo;
 
-    while (fast != NULL) {
+    while (fast != NULL)
+    {
         fast = fast->proximo;
-        if (fast != NULL) {
+        if (fast != NULL)
+        {
             fast = fast->proximo;
             slow = slow->proximo;
         }
@@ -197,18 +200,26 @@ void dividirFila(No* lista, No** ini, No** meio)
     slow->proximo = NULL;
 }
 
-No* sortedMerge(No* A, No* B) {
-    No* lista= NULL;
+No *sortedMerge(No *A, No *B)
+{
+    No *lista = NULL;
 
-    if (A == NULL) { return B; }
-    else if (B == NULL) { return A;}
+    if (A == NULL)
+    {
+        return B;
+    }
+    else if (B == NULL)
+    {
+        return A;
+    }
 
-    if (A->valor <= B->valor) {
+    if (A->valor <= B->valor)
+    {
         lista = A;
         lista->proximo = sortedMerge(A->proximo, B);
-        
     }
-    else if (B->valor <= A->valor) {
+    else if (B->valor <= A->valor)
+    {
         lista = B;
         lista->proximo = sortedMerge(B->proximo, A);
     }
