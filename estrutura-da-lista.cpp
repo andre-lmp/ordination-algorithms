@@ -5,16 +5,16 @@ using namespace std;
 struct No
 {
     int valor;
-    No *anterior = NULL;
-    No *proximo = NULL;
+    No* anterior = NULL;
+    No* proximo = NULL;
 };
 
 class ListaDupla
 {
 private:
     //ATRIBUTOS
-    No *primeiro;
-    No *ultimo;
+    No* primeiro;
+    No* ultimo;
 
 public:
     //METODOS
@@ -24,7 +24,7 @@ public:
     bool listaCheia();              // ISFULL
     bool listaVazia();              // ISEMPTY
     void mostraLista();             // EXIBE A LISTA
-    void trocarValores(No *, No *); // TROCA O VALOR DE 2 NO
+    void trocarValores(No*, No*); // TROCA O VALOR DE 2 NO
     void MergeSort();
 };
 
@@ -37,13 +37,17 @@ int main()
     lista1.insereFinal(7);
     lista1.insereFinal(5);
     lista1.insereFinal(4);
+    lista1.insereFinal(2);
+    lista1.insereFinal(8);
+    lista1.insereFinal(6);
+    lista1.insereFinal(5);
 
     lista1.MergeSort();
     lista1.mostraLista();
 
     return 0;
 }
-void startMergeSort(No **);
+void mergeSort(No**);
 
 ListaDupla::ListaDupla() // CONSTRUTOR
 {
@@ -58,7 +62,7 @@ bool ListaDupla::listaVazia() // VERIFICA SE A LISTA ESTÁ VAZIA
 
 bool ListaDupla::listaCheia() // VERIFICA SE A LISTA ESTÁ CHEIA
 {
-    No *Novo;
+    No* Novo;
     try
     {
         Novo = new No;
@@ -79,7 +83,7 @@ void ListaDupla::insereInicio(int valor) // INSERE NO INÍCIO
     }
     else
     {
-        No *Novo = new No;
+        No* Novo = new No;
         Novo->valor = valor;
         if (primeiro == NULL)
         {
@@ -88,7 +92,7 @@ void ListaDupla::insereInicio(int valor) // INSERE NO INÍCIO
         }
         else
         {
-            No *Temp;
+            No* Temp;
             Temp = primeiro;
             Novo->proximo = Temp;
             Temp->anterior = Novo;
@@ -105,7 +109,7 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
     }
     else
     {
-        No *Novo = new No;
+        No* Novo = new No;
         Novo->valor = valor;
         if (primeiro == NULL)
         {
@@ -114,7 +118,7 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
         }
         else
         {
-            No *Temp;
+            No* Temp;
             Temp = ultimo;
             Novo->anterior = Temp;
             Temp->proximo = Novo;
@@ -123,7 +127,7 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
     }
 }
 
-void ListaDupla::trocarValores(No *v1, No *v2)
+void ListaDupla::trocarValores(No* v1, No* v2)
 {
     if (v1->valor == v2->valor)
     {
@@ -140,33 +144,33 @@ void ListaDupla::trocarValores(No *v1, No *v2)
 //MERGESORT
 void ListaDupla::MergeSort()
 {
-    startMergeSort(&primeiro);
+    mergeSort(&primeiro);
 }
 
-void dividirFila(No *, No **, No **);
-No *sortedMerge(No *, No *);
+void dividirLista(No*, No**, No**);
+No* sortedMerge(No*, No*);
 
-void startMergeSort(No **primeiro) //Faz o controle das funções
+void mergeSort(No** primeiro) //Faz o controle das funções
 {
-    No *lista = *primeiro;
-    No *ini, *meio;
+    No* lista = *primeiro;
+    No* ini, * meio;
     if (lista == NULL || lista->proximo == NULL)
     {
         return;
     }
-    dividirFila(lista, &ini, &meio);
+    dividirLista(lista, &ini, &meio);
 
-    startMergeSort(&ini);
-    startMergeSort(&meio);
+    mergeSort(&ini);
+    mergeSort(&meio);
 
     *primeiro = sortedMerge(ini, meio);
 }
 
 //MERGESORT - DIVISÃO DA LISTA
-void dividirFila(No *lista, No **ini, No **meio)
+void dividirLista(No* lista, No** ini, No** meio)
 {
-    No *slow = lista;
-    No *fast = lista->proximo;
+    No* slow = lista;
+    No* fast = lista->proximo;
 
     while (fast != NULL)
     {
@@ -185,12 +189,12 @@ void dividirFila(No *lista, No **ini, No **meio)
 }
 
 // UNE E ORGANIZA OS NÓS
-No *sortedMerge(No *A, No *B)
+No* sortedMerge(No* A, No* B)
 {
-    No *lista = NULL;
+    No* lista = NULL;
 
     if (A == NULL) { return B; }
-    else if (B == NULL){ return A;}
+    else if (B == NULL) { return A; }
 
     if (A->valor <= B->valor)
     {
@@ -214,7 +218,7 @@ void ListaDupla::mostraLista() // EXIBE A LISTA
     }
     else
     {
-        No *Temp;
+        No* Temp;
         Temp = primeiro;
         while (Temp != NULL)
         {
