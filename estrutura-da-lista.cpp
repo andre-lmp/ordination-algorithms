@@ -168,6 +168,7 @@ void ListaDupla::trocarValores(No *v1, No *v2)
     }
 }
 
+// INSERTSORT
 void ListaDupla::InsertSort()
 {
     No *inicio;
