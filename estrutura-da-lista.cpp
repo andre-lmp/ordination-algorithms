@@ -26,6 +26,7 @@ public:
     void mostraLista();             // EXIBE A LISTA
     void trocarValores(No *, No *); // TROCA O VALOR DE 2 NO
     void MergeSort();
+    void bubbleSort();
 };
 
 //MAIN
@@ -38,7 +39,9 @@ int main()
     lista1.insereFinal(5);
     lista1.insereFinal(4);
 
-    lista1.MergeSort();
+    //lista1.MergeSort();
+    //lista1.bubbleSort();
+    
     lista1.mostraLista();
 
     return 0;
@@ -137,10 +140,32 @@ void ListaDupla::trocarValores(No *v1, No *v2)
     }
 }
 
+// BUBBLESORT
+void ListaDupla::bubbleSort() 
+{
+    if (listaVazia())
+    {
+        return;
+    }
+    else
+    {
+        No *ini;
+        No *fim = NULL;
+        No *atual;
 
-
-
-
+        for (ini = primeiro; ini->proximo != NULL; ini = ini->proximo)
+        {
+            for (atual = primeiro; atual->proximo != fim; atual = atual->proximo)
+            {
+                if (atual->valor > atual->proximo->valor)
+                {
+                    trocarValores(atual, atual->proximo);
+                }
+            }
+            fim = atual;
+        }
+    }
+}
 
 //MERGESORT
 void ListaDupla::MergeSort()
