@@ -41,10 +41,9 @@ int main()
     lista1.insereFinal(8);
     lista1.insereFinal(6);
     lista1.insereFinal(5);
-
     lista1.MergeSort();
     lista1.mostraLista();
-
+    system("PAUSE");
     return 0;
 }
 void mergeSort(No**);
@@ -227,3 +226,4 @@ void ListaDupla::mostraLista() // EXIBE A LISTA
         }
     }
 }
+
