@@ -176,6 +176,7 @@ void ListaDupla::trocarValores(No *v1, No *v2)
     }
 }
 
+//SELECTSORT
 void ListaDupla::selectSort()
 {
     No *atual = primeiro;
