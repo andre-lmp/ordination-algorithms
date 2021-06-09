@@ -150,7 +150,8 @@ void ListaDupla::trocarValores(No *v1, No *v2)
     }
 }
 
-void ListaDupla::bubbleSort() // ORDENA A LISTA
+// BUBBLESORT
+void ListaDupla::bubbleSort() 
 {
     if (listaVazia())
     {
