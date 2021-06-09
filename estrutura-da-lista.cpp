@@ -39,9 +39,7 @@ int main()
     lista1.insereFinal(5);
     lista1.insereFinal(4);
 
-    //lista1.MergeSort();
-    //lista1.bubbleSort();
-    
+    lista1.MergeSort();
     lista1.mostraLista();
 
     return 0;
