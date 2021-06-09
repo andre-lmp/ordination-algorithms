@@ -123,24 +123,6 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
     }
 }
 
-void ListaDupla::mostraLista() // EXIBE A LISTA
-{
-    if (listaVazia())
-    {
-        return;
-    }
-    else
-    {
-        No *Temp;
-        Temp = primeiro;
-        while (Temp != NULL)
-        {
-            cout << Temp->valor << endl;
-            Temp = Temp->proximo;
-        }
-    }
-}
-
 void ListaDupla::trocarValores(No *v1, No *v2)
 {
     if (v1->valor == v2->valor)
@@ -155,6 +137,7 @@ void ListaDupla::trocarValores(No *v1, No *v2)
     }
 }
 
+//MERGESORT
 void ListaDupla::MergeSort()
 {
     startMergeSort(&primeiro);
@@ -179,7 +162,8 @@ void startMergeSort(No **primeiro) //Faz o controle das funções
     *primeiro = sortedMerge(ini, meio);
 }
 
-void dividirFila(No *lista, No **ini, No **meio) //Divide a fila em duas partes
+//MERGESORT - DIVISÃO DA LISTA
+void dividirFila(No *lista, No **ini, No **meio)
 {
     No *slow = lista;
     No *fast = lista->proximo;
@@ -200,7 +184,8 @@ void dividirFila(No *lista, No **ini, No **meio) //Divide a fila em duas partes
     slow->proximo = NULL;
 }
 
-No *sortedMerge(No *A, No *B) //Une e organiza os nodes
+// UNE E ORGANIZA OS NÓS
+No *sortedMerge(No *A, No *B)
 {
     No *lista = NULL;
 
@@ -219,4 +204,22 @@ No *sortedMerge(No *A, No *B) //Une e organiza os nodes
     }
     (lista->proximo)->anterior = lista;
     return lista;
+}
+
+void ListaDupla::mostraLista() // EXIBE A LISTA
+{
+    if (listaVazia())
+    {
+        return;
+    }
+    else
+    {
+        No *Temp;
+        Temp = primeiro;
+        while (Temp != NULL)
+        {
+            cout << Temp->valor << endl;
+            Temp = Temp->proximo;
+        }
+    }
 }
