@@ -48,14 +48,10 @@ int main()
     lista1.insereInicio(1);
     lista1.insereInicio(7);
     lista1.insereInicio(7);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
-
     lista1.bubbleSort();
 
     lista1.mostraLista();
-
+    system("PAUSE");
     return 0;
 }
 
