@@ -136,24 +136,6 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
     }
 }
 
-void ListaDupla::mostraLista() // EXIBE A LISTA
-{
-    if (listaVazia())
-    {
-        return;
-    }
-    else
-    {
-        No *Temp;
-        Temp = primeiro;
-        while (Temp != NULL)
-        {
-            cout << Temp->valor << endl;
-            Temp = Temp->proximo;
-        }
-    }
-}
-
 void ListaDupla::trocarValores(No *v1, No *v2)
 {
     if (v1->valor == v2->valor)
@@ -181,6 +163,24 @@ void ListaDupla::InsertSort()
             {
                 trocarValores(inicio, deuspfv);
             }
+        }
+    }
+}
+
+void ListaDupla::mostraLista() // EXIBE A LISTA
+{
+    if (listaVazia())
+    {
+        return;
+    }
+    else
+    {
+        No *Temp;
+        Temp = primeiro;
+        while (Temp != NULL)
+        {
+            cout << Temp->valor << endl;
+            Temp = Temp->proximo;
         }
     }
 }
