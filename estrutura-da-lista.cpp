@@ -24,33 +24,23 @@ public:
     bool listaCheia();              // ISFULL
     bool listaVazia();              // ISEMPTY
     void mostraLista();             // EXIBE A LISTA
-    void trocarValores(No *, No *); // TROCA O VALOR DE 2 NO
-    void InsertSort();
+    void trocarValores(No *, No *); // TROCA O VALOR DE 2 NÓS
+    void InsertSort();              // ORDENA A LISTA
 };
 
 //MAIN
 int main()
 {
-    ListaDupla lista1; // INSTÂNCIA DA CLASSE
+    // INSTÂNCIA DA CLASSE
+    ListaDupla lista1;
 
     lista1.insereFinal(1);
     lista1.insereFinal(7);
     lista1.insereFinal(5);
     lista1.insereFinal(4);
-    lista1.insereFinal(5);
-    lista1.insereFinal(4);
-    lista1.insereFinal(4);
-    lista1.insereFinal(4);
-    lista1.insereFinal(0);
-    lista1.insereFinal(9);
-    lista1.insereFinal(9);
-    lista1.insereInicio(1);
-    lista1.insereInicio(1);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
+    lista1.insereInicio(6);
+    lista1.insereInicio(3);
+    lista1.insereInicio(10);
 
     lista1.InsertSort();
     lista1.mostraLista();
@@ -58,18 +48,21 @@ int main()
     return 0;
 }
 
-ListaDupla::ListaDupla() // CONSTRUTOR
+// CONSTRUTOR
+ListaDupla::ListaDupla()
 {
     primeiro = NULL;
     ultimo = NULL;
 }
 
-bool ListaDupla::listaVazia() // VERIFICA SE A LISTA ESTÁ VAZIA
+// VERIFICA SE A LISTA ESTÁ VAZIA
+bool ListaDupla::listaVazia()
 {
     return primeiro == NULL;
 }
 
-bool ListaDupla::listaCheia() // VERIFICA SE A LISTA ESTÁ CHEIA
+// VERIFICA SE A LISTA (MEMÓRIA DO COMPUTADOR) ESTÁ CHEIA
+bool ListaDupla::listaCheia()
 {
     No *Novo;
     try
@@ -84,7 +77,8 @@ bool ListaDupla::listaCheia() // VERIFICA SE A LISTA ESTÁ CHEIA
     }
 }
 
-void ListaDupla::insereInicio(int valor) // INSERE NO INÍCIO
+// INSERE UM VALOR NO INÍCIO DA LISTA
+void ListaDupla::insereInicio(int valor)
 {
     if (listaCheia())
     {
@@ -110,7 +104,8 @@ void ListaDupla::insereInicio(int valor) // INSERE NO INÍCIO
     }
 }
 
-void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
+// INSERE UM VALOR NO FINAL DA LISTA
+void ListaDupla::insereFinal(int valor)
 {
     if (listaCheia())
     {
@@ -136,6 +131,7 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
     }
 }
 
+// TROCA OS VALORES DE DOIS NÓS
 void ListaDupla::trocarValores(No *v1, No *v2)
 {
     if (v1->valor == v2->valor)
@@ -155,7 +151,8 @@ void ListaDupla::InsertSort()
 {
     No *inicio;
     No *deuspfv;
-    for (inicio = primeiro; inicio->proximo != NULL; inicio = inicio->proximo)
+
+    for (inicio = primeiro; inicio != NULL; inicio = inicio->proximo)
     {
         for (deuspfv = primeiro; deuspfv != inicio; deuspfv = deuspfv->proximo)
         {
@@ -167,7 +164,8 @@ void ListaDupla::InsertSort()
     }
 }
 
-void ListaDupla::mostraLista() // EXIBE A LISTA
+// EXIBE OS ELEMENTOS DA LISTA
+void ListaDupla::mostraLista()
 {
     if (listaVazia())
     {
