@@ -24,40 +24,43 @@ public:
     bool listaCheia();              // ISFULL
     bool listaVazia();              // ISEMPTY
     void mostraLista();             // EXIBE A LISTA
-    void trocarValores(No *, No *); // TROCA O VALOR DE 2 NO
-    void MergeSort();
-    void bubbleSort();
+    void trocarValores(No *, No *); // TROCA O VALOR DE 2 NÓS
 };
 
 //MAIN
 int main()
 {
-    ListaDupla lista1; // INSTÂNCIA DA CLASSE
+    // INSTÂNCIA DA CLASSE
+    ListaDupla lista1;
 
     lista1.insereFinal(1);
     lista1.insereFinal(7);
     lista1.insereFinal(5);
     lista1.insereFinal(4);
+    lista1.insereInicio(10);
+    lista1.insereInicio(6);
+    lista1.insereInicio(3);
 
-    lista1.MergeSort();
     lista1.mostraLista();
 
     return 0;
 }
-void startMergeSort(No **);
 
-ListaDupla::ListaDupla() // CONSTRUTOR
+// CONSTRUTOR
+ListaDupla::ListaDupla()
 {
     primeiro = NULL;
     ultimo = NULL;
 }
 
-bool ListaDupla::listaVazia() // VERIFICA SE A LISTA ESTÁ VAZIA
+// VERIFICA SE A LISTA ESTÁ VAZIA
+bool ListaDupla::listaVazia()
 {
     return primeiro == NULL;
 }
 
-bool ListaDupla::listaCheia() // VERIFICA SE A LISTA ESTÁ CHEIA
+// VERIFICA SE A LISTA (MEMÓRIA DO COMPUTADOR) ESTÁ CHEIA
+bool ListaDupla::listaCheia()
 {
     No *Novo;
     try
@@ -72,7 +75,8 @@ bool ListaDupla::listaCheia() // VERIFICA SE A LISTA ESTÁ CHEIA
     }
 }
 
-void ListaDupla::insereInicio(int valor) // INSERE NO INÍCIO
+//INSERE UM VALOR NO INÍCIO DA LISTA
+void ListaDupla::insereInicio(int valor)
 {
     if (listaCheia())
     {
@@ -98,7 +102,8 @@ void ListaDupla::insereInicio(int valor) // INSERE NO INÍCIO
     }
 }
 
-void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
+// INSERE UM VALOR NO FINAL DA LISTA
+void ListaDupla::insereFinal(int valor)
 {
     if (listaCheia())
     {
@@ -124,6 +129,7 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
     }
 }
 
+// TROCA OS VALORES DE DOIS NÓS
 void ListaDupla::trocarValores(No *v1, No *v2)
 {
     if (v1->valor == v2->valor)
@@ -138,103 +144,8 @@ void ListaDupla::trocarValores(No *v1, No *v2)
     }
 }
 
-// BUBBLESORT
-void ListaDupla::bubbleSort() 
-{
-    if (listaVazia())
-    {
-        return;
-    }
-    else
-    {
-        No *ini;
-        No *fim = NULL;
-        No *atual;
-
-        for (ini = primeiro; ini->proximo != NULL; ini = ini->proximo)
-        {
-            for (atual = primeiro; atual->proximo != fim; atual = atual->proximo)
-            {
-                if (atual->valor > atual->proximo->valor)
-                {
-                    trocarValores(atual, atual->proximo);
-                }
-            }
-            fim = atual;
-        }
-    }
-}
-
-//MERGESORT
-void ListaDupla::MergeSort()
-{
-    startMergeSort(&primeiro);
-}
-
-void dividirFila(No *, No **, No **);
-No *sortedMerge(No *, No *);
-
-void startMergeSort(No **primeiro) //Faz o controle das funções
-{
-    No *lista = *primeiro;
-    No *ini, *meio;
-    if (lista == NULL || lista->proximo == NULL)
-    {
-        return;
-    }
-    dividirFila(lista, &ini, &meio);
-
-    startMergeSort(&ini);
-    startMergeSort(&meio);
-
-    *primeiro = sortedMerge(ini, meio);
-}
-
-//MERGESORT - DIVISÃO DA LISTA
-void dividirFila(No *lista, No **ini, No **meio)
-{
-    No *slow = lista;
-    No *fast = lista->proximo;
-
-    while (fast != NULL)
-    {
-        fast = fast->proximo;
-        if (fast != NULL)
-        {
-            fast = fast->proximo;
-            slow = slow->proximo;
-        }
-    }
-    *ini = lista;
-    *meio = slow->proximo;
-
-    (slow->proximo)->anterior = NULL;
-    slow->proximo = NULL;
-}
-
-// UNE E ORGANIZA OS NÓS
-No *sortedMerge(No *A, No *B)
-{
-    No *lista = NULL;
-
-    if (A == NULL) { return B; }
-    else if (B == NULL){ return A;}
-
-    if (A->valor <= B->valor)
-    {
-        lista = A;
-        lista->proximo = sortedMerge(A->proximo, B);
-    }
-    else if (B->valor <= A->valor)
-    {
-        lista = B;
-        lista->proximo = sortedMerge(B->proximo, A);
-    }
-    (lista->proximo)->anterior = lista;
-    return lista;
-}
-
-void ListaDupla::mostraLista() // EXIBE A LISTA
+// EXIBE OS ELEMENTOS DA LISTA
+void ListaDupla::mostraLista()
 {
     if (listaVazia())
     {
