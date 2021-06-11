@@ -24,14 +24,15 @@ public:
     bool listaCheia();              // ISFULL
     bool listaVazia();              // ISEMPTY
     void mostraLista();             // EXIBE A LISTA
-    void trocarValores(No *, No *); // TROCA O VALOR DE 2 NO
-    void MergeSort();
+    void trocarValores(No *, No *); // TROCA O VALOR DE 2 NÓS
+    void MergeSort();               // ORDENA A LISTA
 };
 
 //MAIN
 int main()
 {
-    ListaDupla lista1; // INSTÂNCIA DA CLASSE
+    // INSTÂNCIA DA CLASSE
+    ListaDupla lista1;
 
     lista1.insereFinal(1);
     lista1.insereFinal(7);
@@ -48,18 +49,21 @@ int main()
 }
 void mergeSort(No **);
 
-ListaDupla::ListaDupla() // CONSTRUTOR
+// CONSTRUTOR
+ListaDupla::ListaDupla()
 {
     primeiro = NULL;
     ultimo = NULL;
 }
 
-bool ListaDupla::listaVazia() // VERIFICA SE A LISTA ESTÁ VAZIA
+// VERIFICA SE A LISTA ESTÁ VAZIA
+bool ListaDupla::listaVazia()
 {
     return primeiro == NULL;
 }
 
-bool ListaDupla::listaCheia() // VERIFICA SE A LISTA ESTÁ CHEIA
+// VERIFICA SE A LISTA (MEMÓRIA DO COMPUTADOR) ESTÁ CHEIA
+bool ListaDupla::listaCheia()
 {
     No *Novo;
     try
@@ -74,7 +78,8 @@ bool ListaDupla::listaCheia() // VERIFICA SE A LISTA ESTÁ CHEIA
     }
 }
 
-void ListaDupla::insereInicio(int valor) // INSERE NO INÍCIO
+// INSERE UM VALOR NO INÍCIO DA LISTA
+void ListaDupla::insereInicio(int valor)
 {
     if (listaCheia())
     {
@@ -100,7 +105,8 @@ void ListaDupla::insereInicio(int valor) // INSERE NO INÍCIO
     }
 }
 
-void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
+// INSERE UM VALOR NO FINAL DA LISTA
+void ListaDupla::insereFinal(int valor)
 {
     if (listaCheia())
     {
@@ -126,6 +132,7 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
     }
 }
 
+// FAZ A TROCA DOS VALORES DE DOIS NÓS
 void ListaDupla::trocarValores(No *v1, No *v2)
 {
     if (v1->valor == v2->valor)
@@ -149,7 +156,8 @@ void ListaDupla::MergeSort()
 void dividirLista(No *, No **, No **);
 No *sortedMerge(No *, No *);
 
-void mergeSort(No **primeiro) //Faz o controle das funções
+// MERGESORT - CONTROLE DAS FUNÇÕES
+void mergeSort(No **primeiro)
 {
     No *lista = *primeiro;
     No *ini, *meio;
@@ -187,7 +195,7 @@ void dividirLista(No *lista, No **ini, No **meio)
     slow->proximo = NULL;
 }
 
-// UNE E ORGANIZA OS NÓS
+// MERGESORT - UNE E ORGANIZA OS NÓS
 No *sortedMerge(No *A, No *B)
 {
     No *lista = NULL;
@@ -215,7 +223,8 @@ No *sortedMerge(No *A, No *B)
     return lista;
 }
 
-void ListaDupla::mostraLista() // EXIBE A LISTA
+// EXIBE OS ELEMENTOS DA LISTA
+void ListaDupla::mostraLista()
 {
     if (listaVazia())
     {
