@@ -34,35 +34,18 @@ int main()
     ListaDupla lista1; // INSTÂNCIA DA CLASSE
 
     lista1.insereFinal(1);
+    lista1.insereFinal(1);
     lista1.insereFinal(7);
-    lista1.insereFinal(0);
     lista1.insereFinal(5);
     lista1.insereFinal(4);
-    lista1.insereFinal(5);
-    lista1.insereFinal(4);
-    lista1.insereFinal(4);
-    lista1.insereFinal(4);
-    lista1.insereFinal(7);
-    lista1.insereFinal(0);
-    lista1.insereFinal(5);
-    lista1.insereFinal(4);
-    lista1.insereFinal(5);
-    lista1.insereFinal(4);
-    lista1.insereFinal(4);
-    lista1.insereFinal(4);
-    lista1.insereFinal(0);
-    lista1.insereFinal(9);
-    lista1.insereFinal(9);
-    lista1.insereInicio(1);
-    lista1.insereInicio(1);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
-    lista1.insereInicio(7);
+    lista1.insereInicio(10);
+    lista1.insereInicio(6);
+    lista1.insereInicio(3);
+    
     lista1.selectSort();
 
     lista1.mostraLista();
+    system("PAUSE");
 
     return 0;
 }
@@ -168,15 +151,18 @@ void ListaDupla::selectSort()
 
     for (fim; fim->anterior != primeiro; fim = fim->anterior)
     {
-        maior = atual = primeiro;
-        for (atual; atual != fim->proximo; atual = atual->proximo)
+        maior = primeiro;
+        for (atual = primeiro; atual != fim; atual = atual->proximo)
         {
             if (maior->valor <= atual->valor)
             {
                 maior = atual;
             }
         }
-        trocarValores(fim, maior);
+        if (maior->valor > fim->valor)
+        {
+            trocarValores(fim, maior);
+        }
     }
 }
 
