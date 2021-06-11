@@ -38,12 +38,13 @@ int main()
     lista1.insereFinal(7);
     lista1.insereFinal(5);
     lista1.insereFinal(4);
-    lista1.insereFinal(2);
-    lista1.insereFinal(8);
-    lista1.insereFinal(6);
-    lista1.insereFinal(5);
+    lista1.insereInicio(10);
+    lista1.insereInicio(6);
+    lista1.insereInicio(3);
+
     lista1.MergeSort();
     lista1.mostraLista();
+    
     system("PAUSE");
     return 0;
 }
