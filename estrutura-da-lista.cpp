@@ -34,7 +34,6 @@ int main()
     ListaDupla lista1; // INSTÂNCIA DA CLASSE
 
     lista1.insereFinal(1);
-    lista1.insereFinal(1);
     lista1.insereFinal(7);
     lista1.insereFinal(5);
     lista1.insereFinal(4);
@@ -149,9 +148,10 @@ void ListaDupla::selectSort()
     No *fim = ultimo;
     No *maior = primeiro;
 
-    for (fim; fim->anterior != primeiro; fim = fim->anterior)
+    for (fim; fim->anterior != primeiro->anterior; fim = fim->anterior)
     {
         maior = primeiro;
+
         for (atual = primeiro; atual != fim; atual = atual->proximo)
         {
             if (maior->valor <= atual->valor)
@@ -159,7 +159,7 @@ void ListaDupla::selectSort()
                 maior = atual;
             }
         }
-        if (maior->valor > fim->valor)
+        if (maior->valor > fim->valor )
         {
             trocarValores(fim, maior);
         }
