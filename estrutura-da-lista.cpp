@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdlib>  
-#include <locale.h>
 using namespace std;
 
 // Todo nó da lista tem um valor, um anterior e um próximo.
@@ -36,21 +35,21 @@ public:
 //MAIN
 int main()
 {
-    setlocale(LC_ALL, "Portuguese");
     int escolha;
     
     // INSTÂNCIA DA CLASSE
     ListaDupla lista1;
 
     // GERA 20 NUMEROS ALÉATORIOS DE 1 A 100
-    for (int i= 0; i < 20; i++) 
+    for (int i= 0; i < 10; i++) 
     {
         lista1.insereInicio(1 + (rand() % 100)); 
     }
 
-    cout << "1- BubbleSort \n2- SelectSort \n3- InserSort \n4- MergeSort" << endl;
+    cout << "1- BubbleSort \n2- SelectSort \n3- InserSort \n4- MergeSort" << endl; 
     cin >> escolha;
-    switch (escolha){
+    switch (escolha)
+    {
         case 1:
             lista1.bubbleSort();
             break;
@@ -64,14 +63,12 @@ int main()
             lista1.MergeSort();
             break;
         default:
-            cout <<"Número inválido ";
-
+            cout << "Numero invalido!";
     }
     if (escolha == 1 || escolha == 2 || escolha == 3 || escolha == 4){
         cout << endl;
         lista1.mostraLista();
     }
-
     return 0;
 }
 
