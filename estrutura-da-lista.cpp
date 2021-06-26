@@ -234,7 +234,7 @@ void ListaDupla::selectSort()
                 maior = atual;
             }
         }
-        if (maior->valor > fim->valor )
+        if (maior->valor > fim->valor)
         {
             trocarValores(fim, maior);
         }
