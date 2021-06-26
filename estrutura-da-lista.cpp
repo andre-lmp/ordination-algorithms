@@ -26,6 +26,7 @@ public:
     void mostraLista();             // EXIBE A LISTA
     void trocarValores(No *, No *); // TROCA O VALOR DE 2 NÓS
     void bubbleSort();
+    void InsertSort();              // ORDENA A LISTA
 };
 
 //MAIN
@@ -41,7 +42,7 @@ int main()
     lista1.insereInicio(10);
     lista1.insereInicio(6);
     lista1.insereInicio(3);
-
+    lista1.bubbleSort();
     lista1.mostraLista();
 
     return 0;
@@ -76,7 +77,7 @@ bool ListaDupla::listaCheia()
     }
 }
 
-//INSERE UM VALOR NO INÍCIO DA LISTA
+// INSERE UM VALOR NO INÍCIO DA LISTA
 void ListaDupla::insereInicio(int valor)
 {
     if (listaCheia())
@@ -168,6 +169,23 @@ void ListaDupla::bubbleSort()
                 }
             }
             fim = atual;
+        }
+    }
+}
+// INSERTSORT
+void ListaDupla::InsertSort()
+{
+    No *inicio;
+    No *deuspfv;
+
+    for (inicio = primeiro; inicio != NULL; inicio = inicio->proximo)
+    {
+        for (deuspfv = primeiro; deuspfv != inicio; deuspfv = deuspfv->proximo)
+        {
+            if (deuspfv->valor >= inicio->valor)
+            {
+                trocarValores(inicio, deuspfv);
+            }
         }
     }
 }
