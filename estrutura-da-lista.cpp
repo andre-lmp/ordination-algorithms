@@ -25,6 +25,7 @@ public:
     bool listaVazia();              // ISEMPTY
     void mostraLista();             // EXIBE A LISTA
     void trocarValores(No *, No *); // TROCA O VALOR DE 2 NÓS
+    void bubbleSort();
 };
 
 //MAIN
@@ -141,6 +142,33 @@ void ListaDupla::trocarValores(No *v1, No *v2)
         int aux = v1->valor;
         v1->valor = v2->valor;
         v2->valor = aux;
+    }
+}
+
+// BUBBLESORT
+void ListaDupla::bubbleSort()
+{
+    if (listaVazia())
+    {
+        return;
+    }
+    else
+    {
+        No *ini;
+        No *fim = NULL;
+        No *atual;
+
+        for (ini = primeiro; ini->proximo != NULL; ini = ini->proximo)
+        {
+            for (atual = primeiro; atual->proximo != fim; atual = atual->proximo)
+            {
+                if (atual->valor > atual->proximo->valor)
+                {
+                    trocarValores(atual, atual->proximo);
+                }
+            }
+            fim = atual;
+        }
     }
 }
 
