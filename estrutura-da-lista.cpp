@@ -28,26 +28,6 @@ public:
     void InsertSort();              // ORDENA A LISTA
 };
 
-//MAIN
-int main()
-{
-    // INSTÂNCIA DA CLASSE
-    ListaDupla lista1;
-
-    lista1.insereFinal(1);
-    lista1.insereFinal(7);
-    lista1.insereFinal(5);
-    lista1.insereFinal(4);
-    lista1.insereInicio(6);
-    lista1.insereInicio(3);
-    lista1.insereInicio(10);
-
-    lista1.InsertSort();
-    lista1.mostraLista();
-
-    return 0;
-}
-
 // CONSTRUTOR
 ListaDupla::ListaDupla()
 {
