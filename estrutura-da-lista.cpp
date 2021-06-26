@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstdlib>  
+#include <cstdlib>
 using namespace std;
 
 // Todo nó da lista tem um valor, um anterior e um próximo.
@@ -29,43 +29,44 @@ public:
     void bubbleSort();
     void selectSort();
     void insertSort();
-    void MergeSort(); 
+    void MergeSort();
 };
 
 //MAIN
 int main()
 {
     int escolha;
-    
+
     // INSTÂNCIA DA CLASSE
     ListaDupla lista1;
 
-    // GERA 20 NUMEROS ALÉATORIOS DE 1 A 100
-    for (int i= 0; i < 10; i++) 
+    // GERA 10 NUMEROS ALÉATORIOS DE 1 A 100
+    for (int i = 0; i < 10; i++)
     {
-        lista1.insereInicio(1 + (rand() % 100)); 
+        lista1.insereInicio(1 + (rand() % 100));
     }
 
-    cout << "1- BubbleSort \n2- SelectSort \n3- InserSort \n4- MergeSort" << endl; 
+    cout << "1- BubbleSort \n2- SelectSort \n3- InserSort \n4- MergeSort" << endl;
     cin >> escolha;
     switch (escolha)
     {
-        case 1:
-            lista1.bubbleSort();
-            break;
-        case 2:
-            lista1.selectSort();
-            break;
-        case 3:
-            lista1.insertSort();
-            break;
-        case 4:
-            lista1.MergeSort();
-            break;
-        default:
-            cout << "Numero invalido!";
+    case 1:
+        lista1.bubbleSort();
+        break;
+    case 2:
+        lista1.selectSort();
+        break;
+    case 3:
+        lista1.insertSort();
+        break;
+    case 4:
+        lista1.MergeSort();
+        break;
+    default:
+        cout << "Numero invalido!";
     }
-    if (escolha == 1 || escolha == 2 || escolha == 3 || escolha == 4){
+    if (escolha == 1 || escolha == 2 || escolha == 3 || escolha == 4)
+    {
         cout << endl;
         lista1.mostraLista();
     }
@@ -73,6 +74,7 @@ int main()
 }
 
 void mergeSort(No **);
+
 // CONSTRUTOR
 ListaDupla::ListaDupla()
 {
@@ -271,7 +273,6 @@ void dividirLista(No *lista, No **ini, No **meio)
 {
     No *slow = lista;
     No *fast = lista->proximo;
-    
 
     while (fast != NULL)
     {
