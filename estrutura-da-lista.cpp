@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>  
+#include <locale.h>
 using namespace std;
 
 // Todo nó da lista tem um valor, um anterior e um próximo.
@@ -28,29 +30,52 @@ public:
     void bubbleSort();
     void selectSort();
     void insertSort();
+    void MergeSort(); 
 };
 
 //MAIN
 int main()
 {
+    setlocale(LC_ALL, "Portuguese");
+    int escolha;
+    
     // INSTÂNCIA DA CLASSE
     ListaDupla lista1;
 
-    lista1.insereFinal(1);
-    lista1.insereFinal(7);
-    lista1.insereFinal(5);
-    lista1.insereFinal(4);
-    lista1.insereInicio(10);
-    lista1.insereInicio(6);
-    lista1.insereInicio(3);
-    
-    lista1.insertSort();
-    lista1.mostraLista();
-    system("PAUSE");
+    // GERA 20 NUMEROS ALÉATORIOS DE 1 A 100
+    for (int i= 0; i < 20; i++) 
+    {
+        lista1.insereInicio(1 + (rand() % 100)); 
+    }
+
+    cout << "1- BubbleSort \n2- SelectSort \n3- InserSort \n4- MergeSort" << endl;
+    cin >> escolha;
+    switch (escolha){
+        case 1:
+            lista1.bubbleSort();
+            break;
+        case 2:
+            lista1.selectSort();
+            break;
+        case 3:
+            lista1.insertSort();
+            break;
+        case 4:
+            lista1.MergeSort();
+            break;
+        default:
+            cout <<"Número inválido ";
+
+    }
+    if (escolha == 1 || escolha == 2 || escolha == 3 || escolha == 4){
+        cout << endl;
+        lista1.mostraLista();
+    }
 
     return 0;
 }
 
+void mergeSort(No **);
 // CONSTRUTOR
 ListaDupla::ListaDupla()
 {
@@ -217,6 +242,82 @@ void ListaDupla::selectSort()
             trocarValores(fim, maior);
         }
     }
+}
+//MERGESORT
+void ListaDupla::MergeSort()
+{
+    mergeSort(&primeiro);
+}
+
+void dividirLista(No *, No **, No **);
+No *sortedMerge(No *, No *);
+
+// MERGESORT - CONTROLE DAS FUNÇÕES
+void mergeSort(No **primeiro)
+{
+    No *lista = *primeiro;
+    No *ini, *meio;
+    if (lista == NULL || lista->proximo == NULL)
+    {
+        return;
+    }
+    dividirLista(lista, &ini, &meio);
+
+    mergeSort(&ini);
+    mergeSort(&meio);
+
+    *primeiro = sortedMerge(ini, meio);
+}
+
+//MERGESORT - DIVISÃO DA LISTA
+void dividirLista(No *lista, No **ini, No **meio)
+{
+    No *slow = lista;
+    No *fast = lista->proximo;
+    
+
+    while (fast != NULL)
+    {
+        fast = fast->proximo;
+        if (fast != NULL)
+        {
+            fast = fast->proximo;
+            slow = slow->proximo;
+        }
+    }
+    *ini = lista;
+    *meio = slow->proximo;
+
+    (slow->proximo)->anterior = NULL;
+    slow->proximo = NULL;
+}
+
+// MERGESORT - UNE E ORGANIZA OS NÓS
+No *sortedMerge(No *A, No *B)
+{
+    No *lista = NULL;
+
+    if (A == NULL)
+    {
+        return B;
+    }
+    else if (B == NULL)
+    {
+        return A;
+    }
+
+    if (A->valor <= B->valor)
+    {
+        lista = A;
+        lista->proximo = sortedMerge(A->proximo, B);
+    }
+    else if (B->valor <= A->valor)
+    {
+        lista = B;
+        lista->proximo = sortedMerge(B->proximo, A);
+    }
+    (lista->proximo)->anterior = lista;
+    return lista;
 }
 
 // EXIBE OS ELEMENTOS DA LISTA
