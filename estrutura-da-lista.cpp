@@ -26,6 +26,7 @@ public:
     void mostraLista();             // EXIBE A LISTA
     void trocarValores(No *, No *); // TROCA O VALOR DE 2 NÓS
     void bubbleSort();
+    void selectSort();
 };
 
 //MAIN
@@ -43,6 +44,7 @@ int main()
     lista1.insereInicio(3);
 
     lista1.mostraLista();
+    system("PAUSE");
 
     return 0;
 }
@@ -168,6 +170,31 @@ void ListaDupla::bubbleSort()
                 }
             }
             fim = atual;
+        }
+    }
+}
+
+//SELECTSORT
+void ListaDupla::selectSort()
+{
+    No *atual = primeiro;
+    No *fim = ultimo;
+    No *maior = primeiro;
+
+    for (fim; fim->anterior != primeiro->anterior; fim = fim->anterior)
+    {
+        maior = primeiro;
+
+        for (atual = primeiro; atual != fim; atual = atual->proximo)
+        {
+            if (maior->valor <= atual->valor)
+            {
+                maior = atual;
+            }
+        }
+        if (maior->valor > fim->valor )
+        {
+            trocarValores(fim, maior);
         }
     }
 }
