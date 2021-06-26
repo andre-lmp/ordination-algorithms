@@ -44,7 +44,6 @@ int main()
     lista1.insereInicio(6);
     lista1.insereInicio(3);
 
-    lista1.insertSort();
     lista1.mostraLista();
     system("PAUSE");
 
