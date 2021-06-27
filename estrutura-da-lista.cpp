@@ -46,7 +46,7 @@ int main()
         lista1.insereInicio(1 + (rand() % 100));
     }
 
-    cout << "1- BubbleSort \n2- SelectSort \n3- InserSort \n4- MergeSort" << endl;
+    cout << "1- BubbleSort \n2- SelectSort \n3- InsertSort \n4- MergeSort" << endl;
     cin >> escolha;
     switch (escolha)
     {
@@ -203,17 +203,27 @@ void ListaDupla::bubbleSort()
 // INSERTSORT
 void ListaDupla::insertSort()
 {
-    No *inicio;
+    No *chave;
     No *deuspfv;
+    int backup;
 
-    for (inicio = primeiro; inicio != NULL; inicio = inicio->proximo)
+    for (chave = primeiro->proximo; chave != NULL; chave = chave->proximo)
     {
-        for (deuspfv = primeiro; deuspfv != inicio; deuspfv = deuspfv->proximo)
+        backup= chave->valor;
+        
+        // EMPURRA ELEMENTOS ATÉ ENCONTRAR SEU LUGAR NA LISTA
+        for (deuspfv = chave->anterior; deuspfv != NULL && deuspfv->valor >= backup; deuspfv = deuspfv->anterior)
         {
-            if (deuspfv->valor >= inicio->valor)
-            {
-                trocarValores(inicio, deuspfv);
-            }
+            (deuspfv->proximo)->valor = deuspfv->valor;
+        }
+
+        if (deuspfv == NULL)
+        {
+            deuspfv= primeiro;
+            deuspfv->valor= backup;
+        }
+        else{
+            deuspfv->proximo->valor= backup;
         }
     }
 }
