@@ -44,8 +44,7 @@ int main()
 
     lista1.MergeSort();
     lista1.mostraLista();
-    
-    system("PAUSE");
+
     return 0;
 }
 void mergeSort(No **);
