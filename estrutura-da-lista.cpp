@@ -18,14 +18,14 @@ private:
 
 public:
     //METODOS
-    ListaDupla();                 // CONSTRUTOR
-    void insereInicio(int valor); // INSERE NO INÍCIO
-    void insereFinal(int valor);  // INSERE NO FIM
-    bool listaCheia();            // ISFULL
-    bool listaVazia();            // ISEMPTY
-    void mostraLista();           // EXIBE A LISTA
-    void trocarValores(No *, No *);
-    void selectSort();
+    ListaDupla();                   // CONSTRUTOR
+    void insereInicio(int valor);   // INSERE NO INÍCIO
+    void insereFinal(int valor);    // INSERE NO FIM
+    bool listaCheia();              // ISFULL
+    bool listaVazia();              // ISEMPTY
+    void mostraLista();             // EXIBE A LISTA
+    void trocarValores(No *, No *); // TROCA OS VALORES DE 2 NÓS
+    void selectSort();              // ORDENA A LISTA
 };
 
 //MAIN
@@ -40,27 +40,28 @@ int main()
     lista1.insereInicio(10);
     lista1.insereInicio(6);
     lista1.insereInicio(3);
-    
-    lista1.selectSort();
 
+    lista1.selectSort();
     lista1.mostraLista();
-    system("PAUSE");
 
     return 0;
 }
 
-ListaDupla::ListaDupla() // CONSTRUTOR
+// CONSTRUTOR
+ListaDupla::ListaDupla()
 {
     primeiro = NULL;
     ultimo = NULL;
 }
 
-bool ListaDupla::listaVazia() // VERIFICA SE A LISTA ESTÁ VAZIA
+// VERIFICA SE A LISTA ESTÁ VAZIA
+bool ListaDupla::listaVazia()
 {
     return primeiro == NULL;
 }
 
-bool ListaDupla::listaCheia() // VERIFICA SE A LISTA ESTÁ CHEIA
+// VERIFICA SE A LISTA ESTÁ CHEIA
+bool ListaDupla::listaCheia()
 {
     No *Novo;
     try
@@ -75,7 +76,8 @@ bool ListaDupla::listaCheia() // VERIFICA SE A LISTA ESTÁ CHEIA
     }
 }
 
-void ListaDupla::insereInicio(int valor) // INSERE NO INÍCIO
+// INSERE NO INÍCIO
+void ListaDupla::insereInicio(int valor)
 {
     if (listaCheia())
     {
@@ -101,7 +103,8 @@ void ListaDupla::insereInicio(int valor) // INSERE NO INÍCIO
     }
 }
 
-void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
+// INSERE UM VALOR NO FINAL DA LISTA
+void ListaDupla::insereFinal(int valor)
 {
     if (listaCheia())
     {
@@ -127,6 +130,7 @@ void ListaDupla::insereFinal(int valor) // INSERE NO FINAL
     }
 }
 
+// TROCA OS VALORES DOS NÓS
 void ListaDupla::trocarValores(No *v1, No *v2)
 {
     if (v1->valor == v2->valor)
@@ -159,14 +163,15 @@ void ListaDupla::selectSort()
                 maior = atual;
             }
         }
-        if (maior->valor > fim->valor )
+        if (maior->valor > fim->valor)
         {
             trocarValores(fim, maior);
         }
     }
 }
 
-void ListaDupla::mostraLista() // EXIBE A LISTA
+// EXIBE A LISTA
+void ListaDupla::mostraLista()
 {
     if (listaVazia())
     {
