@@ -25,7 +25,7 @@ public:
     bool listaVazia();              // ISEMPTY
     void mostraLista();             // EXIBE A LISTA
     void trocarValores(No *, No *); // TROCA O VALOR DE 2 NÓS
-    void InsertSort();              // ORDENA A LISTA
+    void insertSort();              // ORDENA A LISTA
 };
 
 //MAIN
@@ -41,7 +41,7 @@ int main()
     lista1.insereInicio(10);
     lista1.insereInicio(6);
     lista1.insereInicio(3);
-    lista1.InsertSort();
+    lista1.insertSort();
     lista1.mostraLista();
 
     return 0;
@@ -146,7 +146,7 @@ void ListaDupla::trocarValores(No *v1, No *v2)
 }
 
 // INSERTSORT
-void ListaDupla::InsertSort()
+void ListaDupla::insertSort()
 {
     No *inicio;
     No *deuspfv;
