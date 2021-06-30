@@ -40,7 +40,7 @@ int main()
     // INSTÂNCIA DA CLASSE
     ListaDupla lista1;
 
-    // GERA 10 NUMEROS ALÉATORIOS DE 1 A 100
+    // GERA 10 NUMEROS ALÉATORIOS ENTRE 1 E 100
     for (int i = 0; i < 10; i++)
     {
         lista1.insereInicio(1 + (rand() % 100));
@@ -209,8 +209,8 @@ void ListaDupla::insertSort()
 
     for (chave = primeiro->proximo; chave != NULL; chave = chave->proximo)
     {
-        backup= chave->valor;
-        
+        backup = chave->valor;
+
         // EMPURRA ELEMENTOS ATÉ ENCONTRAR SEU LUGAR NA LISTA
         for (deuspfv = chave->anterior; deuspfv != NULL && deuspfv->valor >= backup; deuspfv = deuspfv->anterior)
         {
@@ -219,11 +219,12 @@ void ListaDupla::insertSort()
 
         if (deuspfv == NULL)
         {
-            deuspfv= primeiro;
-            deuspfv->valor= backup;
+            deuspfv = primeiro;
+            deuspfv->valor = backup;
         }
-        else{
-            deuspfv->proximo->valor= backup;
+        else
+        {
+            deuspfv->proximo->valor = backup;
         }
     }
 }
