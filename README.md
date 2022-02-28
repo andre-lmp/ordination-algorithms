@@ -1,4 +1,4 @@
-# Ordinaiton-Algorithms
+# Ordination-Algorithms
 _Application of 5 sorting algorithms in a doubly chained list._
 
 Hello! This repository has made by Me(andre-lmp), okumura-e(Adriel Itamar) and SrDlay (Denner). Feel free to clone this project or study the code that we had devloped.
